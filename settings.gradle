@@ -1,6 +1,7 @@
-include ':log-gradle-plugin'
-include ':develop'
-include ':network-gradle-plugin'
-include ':serverlog'
-include ':app'
 rootProject.name = "AndroidDevelop"
+
+include ':app'
+include ':develop'
+include ':serverlog'
+include ':log-gradle-plugin'
+include ':network-gradle-plugin'
