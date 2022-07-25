@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="这是开发者界面 \n 稍后会自动重启 \n 请耐心等待"
+    android:gravity="center"
+    android:textSize="30dp"
+    tools:context=".view.OpenDevelopAct" />
