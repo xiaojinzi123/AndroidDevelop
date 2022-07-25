@@ -6,7 +6,6 @@ apply plugin: 'kotlin-kapt'
 android {
 
     compileSdkVersion versions.android_compile_sdk
-    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId "com.xiaojinzi.develop.demo"

@@ -8,7 +8,6 @@ archivesBaseName = "serverLogForAndroid"
 android {
 
     compileSdkVersion versions.android_compile_sdk
-    buildToolsVersion versions.buildTools
 
     defaultConfig {
         minSdkVersion versions.android_min_sdk
