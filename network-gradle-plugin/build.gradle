@@ -1,12 +1,12 @@
 apply plugin: 'groovy'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
     implementation libs.asm
     implementation libs.gson
-    implementation 'com.android.tools.build:gradle:3.3.0'
+    implementation 'com.android.tools.build:gradle:7.1.3'
 }
 
 repositories {
@@ -16,19 +16,22 @@ repositories {
 sourceCompatibility = "8"
 targetCompatibility = "8"
 
-uploadArchives{
+group='com.xiaojinzi'
+version="1.0"
+archivesBaseName='serverLog-log-gradle-plugin'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = archivesBaseName
+            version = version
+            from components.java
+        }
+    }
     repositories {
-        mavenDeployer{
-            repository(url: uri("http://nexus.quvideo.com/nexus/content/repositories/mobile_public_v2/")) {
-                authentication(userName:'app-quvideo', password: '=4$@kQEz[t')
-            }
-            pom.project {
-                artifactId 'serverLog-network-gradle-plugin'
-                version "1.0.3.2"
-                groupId 'com.xiaojinzi'
-                packaging 'jar'
-                description 'ServerLog for Android'
-            }
+        maven {
+            url = "$rootDir/RepoComponent"
         }
     }
 }
