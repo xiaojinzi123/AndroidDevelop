@@ -109,7 +109,7 @@ object DevelopHelper {
             val call = okHttpClient.newCall(request)
 
             val response = call.execute()
-            val json = response.body()!!.string()
+            val json = response.body!!.string()
             val jb = JSONObject(json)
             val errorCode = jb.getInt("errorCode")
             if (errorCode == 0) { // 说明成功了
@@ -145,7 +145,7 @@ object DevelopHelper {
         Strings.requireNotEmpty(text)
         val publicKey: PublicKey = RSAUtil.string2PublicKey(PUBLIC_KEY)
         val bytes: ByteArray =
-            RSAUtil.publicEncrypt(text.toByteArray(StandardCharsets.UTF_8), publicKey)
+            RSAUtil.publicEncrypt(text.toByteArray(Charsets.UTF_8), publicKey)
         return Base64.encodeToString(bytes, Base64.NO_WRAP)
     }
 
@@ -157,7 +157,7 @@ object DevelopHelper {
             Base64.decode(text.toByteArray(charset("UTF-8")), Base64.NO_WRAP),
             publicKey
         )
-        return String(bytes, StandardCharsets.UTF_8)
+        return String(bytes, Charsets.UTF_8)
     }
 
     /**
@@ -170,7 +170,7 @@ object DevelopHelper {
                 file.delete()
             }
             val fileOutputStream = FileOutputStream(file)
-            fileOutputStream.write(value.toByteArray(StandardCharsets.UTF_8))
+            fileOutputStream.write(value.toByteArray(Charsets.UTF_8))
             fileOutputStream.close()
         } catch (ignore: java.lang.Exception) {
         }

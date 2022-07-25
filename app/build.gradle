@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-// apply plugin: 'com.xiaojinzi.serverLog.log.plugin'
+apply plugin: 'com.xiaojinzi.serverLog.network.plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
@@ -23,7 +23,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled = false
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -31,7 +37,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    testImplementation libs.junit
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation libs.constraintlayout
     implementation project(':develop')

@@ -33,10 +33,10 @@ class MessageBean<T> {
         const val TYPE_USER_BEHAVIOR = "userBehavior"
 
         // 表示原始拦截器
-        const val TYPE_NETWORK = "network"
+        const val TYPE_NETWORK_FIRST = "networkFirst"
 
         // 处理过的, 基本表示最后一个日志拦截器
-        const val TYPE_NETWORK_PROCESSED = "networkProcessed"
+        const val TYPE_NETWORK_TAIL = "networkTail"
 
         // Android 的 log
         const val TYPE_ANDROID_LOG = "androidLog"

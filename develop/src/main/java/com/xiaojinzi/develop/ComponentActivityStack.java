@@ -28,7 +28,6 @@ public class ComponentActivityStack {
         private static ComponentActivityStack INSTANCE = new ComponentActivityStack();
     }
 
-    @UiThread
     public static ComponentActivityStack getInstance() {
         return Holder.INSTANCE;
     }

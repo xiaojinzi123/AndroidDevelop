@@ -17,7 +17,7 @@ public class AndroidLogModify implements Opcodes {
 
         ClassWriter cw = new ClassWriter(0);
 
-        ClassVisitor cv = new ClassVisitor(ASM5, cw) {
+        ClassVisitor cv = new ClassVisitor(ASM9, cw) {
 
             private String classOwner;
 
@@ -48,7 +48,7 @@ public class AndroidLogModify implements Opcodes {
         private String classOwner;
 
         public AndroidLogMethodVisitor(MethodVisitor mv, String classOwner) {
-            super(ASM5, mv);
+            super(ASM9, mv);
             this.classOwner = classOwner;
         }
 

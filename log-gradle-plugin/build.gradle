@@ -11,6 +11,9 @@ dependencies {
     implementation gradleApi()
     implementation localGroovy()
     implementation libs.asm
+    implementation libs.asm_commons
+    implementation libs.asm_tree
+    implementation libs.asm_util
     implementation libs.gson
     implementation 'com.android.tools.build:gradle:3.3.0'
 }

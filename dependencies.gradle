@@ -1,20 +1,24 @@
 ext.versions = [
         // 系统级别的版本号
-        android_compile_sdk: 32,
+        android_compile_sdk: 31,
         android_min_sdk    : 16,
-        android_target_sdk : 32,
+        android_target_sdk : 31,
         version_code       : 1000,
         version_name       : "1.0"
 ]
 
 ext.libs = [
         junit           : 'junit:junit:4.13.1',
-        asm             : 'org.ow2.asm:asm-all:5.2',
+        asm             : 'org.ow2.asm:asm:9.0',
+        asm_commons     : 'org.ow2.asm:asm-commons:9.0',
+        asm_tree        : 'org.ow2.asm:asm-tree:9.0',
+        asm_util        : 'org.ow2.asm:asm-util:9.0',
         annotation      : "androidx.annotation:annotation:1.1.0",
         constraintlayout: "androidx.constraintlayout:constraintlayout:2.1.4",
         appcompat       : "androidx.appcompat:appcompat:1.4.2",
         core_ktx        : "androidx.core:core-ktx:1.8.0",
         commons_codec   : 'commons-codec:commons-codec:1.14',
-        okhttp          : "com.squareup.okhttp3:okhttp:3.12.1",
+        okhttp          : "com.squareup.okhttp3:okhttp:4.9.3",
+        // okhttp          : "com.squareup.okhttp3:okhttp:3.12.1",
         gson            : "com.google.code.gson:gson:2.8.6"
 ]

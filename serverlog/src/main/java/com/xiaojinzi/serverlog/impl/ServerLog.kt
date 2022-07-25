@@ -85,7 +85,7 @@ object ServerLog : IServerLogService, Runnable {
                     mWebSocket = webSocket
                     connectState = ConnectState.SUCCESS
                     val setProviderMessageBean = setProviderTypesBuild(
-                        MessageBean.TYPE_NETWORK, MessageBean.TYPE_NETWORK_PROCESSED,
+                        MessageBean.TYPE_NETWORK_FIRST, MessageBean.TYPE_NETWORK_TAIL,
                         MessageBean.TYPE_USER_BEHAVIOR, MessageBean.TYPE_ANDROID_LOG
                     )
                     doSend(setProviderMessageBean, true)
@@ -153,8 +153,10 @@ object ServerLog : IServerLogService, Runnable {
             }
         }
         if (isAddToFirst) {
+            Log.e(TAG, "doSend addToFirst: $messageBean")
             queue.add(0, messageBean)
         } else {
+            Log.e(TAG, "doSend addToLast: $messageBean")
             queue.add(messageBean)
         }
         startSocketConnect()
@@ -173,6 +175,7 @@ object ServerLog : IServerLogService, Runnable {
             }
             try {
                 val heartBeat = heartBeatBuild()
+                Log.e(TAG, "loop create heartBeat, heartBeat = $heartBeat")
                 val b = mWebSocket!!.send(g.toJson(heartBeat))
                 if (!b) {
                     throw Exception("socket 发送失败")
@@ -208,6 +211,7 @@ object ServerLog : IServerLogService, Runnable {
                     }
                 }
             } catch (ignore: Exception) {
+                Log.e(TAG, "loop send message fail, error = ${ignore.message}")
                 connectState = ConnectState.CLOSED
                 startSocketConnect()
             }

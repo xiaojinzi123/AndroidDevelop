@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.xiaojinzi.develop.DevelopHelper
-import com.xiaojinzi.develop.demo.R
 import com.xiaojinzi.serverlog.bean.MessageBean
 import com.xiaojinzi.serverlog.bean.NetWorkLogInfoBean
 import com.xiaojinzi.serverlog.bean.UserBehaviorBean
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         netWorkLogInfoBean.res_headers = listOf("res_header1: value1", "res_header2: value2")
 
         val messageBean = MessageBean<NetWorkLogInfoBean>()
-        messageBean.type = MessageBean.TYPE_NETWORK
+        messageBean.type = MessageBean.TYPE_NETWORK_FIRST
         messageBean.data = netWorkLogInfoBean
         ServerLog.send(messageBean)
 

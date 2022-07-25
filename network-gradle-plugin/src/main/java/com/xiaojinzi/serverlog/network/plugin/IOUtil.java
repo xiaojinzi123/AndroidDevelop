@@ -15,6 +15,8 @@ import java.io.OutputStream;
  */
 public class IOUtil {
 
+    public static final String MODULE_TAG = " NetworkLogPlugin ";
+
     public static void readAndWrite(InputStream is, OutputStream out) throws IOException {
         byte buff[] = new byte[1024];
         int len = -1;

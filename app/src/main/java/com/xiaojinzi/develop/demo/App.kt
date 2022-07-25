@@ -5,6 +5,9 @@ import com.xiaojinzi.develop.Config
 import com.xiaojinzi.develop.DevelopHelper
 import com.xiaojinzi.serverlog.impl.ServerLog
 import com.xiaojinzi.serverlog.impl.ServerLogConfig
+import okhttp3.OkHttp
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 class App : Application() {
 
@@ -26,8 +29,17 @@ class App : Application() {
             ServerLogConfig.newBuilder()
                 .withDebug(DevelopHelper.isDevelop())
                 .withProductName("serverLogDemo")
-            .build()
+                .build()
         )
+
+        Thread {
+            val client = OkHttpClient().newBuilder().build()
+            val call = client.newCall(
+                request = Request.Builder().url("http://www.baidu.com").build()
+            )
+            call.execute()
+        }.start()
+
     }
 
 }

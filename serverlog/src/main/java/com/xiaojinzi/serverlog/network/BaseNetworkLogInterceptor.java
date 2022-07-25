@@ -75,6 +75,7 @@ public abstract class BaseNetworkLogInterceptor implements Interceptor {
         boolean isReadBody = false;
         String headerContextType = request.header("Content-Type");
         if (!TextUtils.isEmpty(headerContextType)) {
+            assert headerContextType != null;
             for (String allow_content_type : ServerLog.mConfig.getNetworkLogAllowReadRequestBodyContentTypeSet()) {
                 if (headerContextType.toLowerCase().contains(allow_content_type)) {
                     isReadBody = true;
@@ -116,6 +117,7 @@ public abstract class BaseNetworkLogInterceptor implements Interceptor {
         boolean isReadResponse = false;
         String headerContextType = response.header("Content-Type");
         if (!TextUtils.isEmpty(headerContextType)) {
+            assert headerContextType != null;
             for (String allow_content_type : ServerLog.mConfig.getNetworkLogAllowReadResponseBodyContentTypeSet()) {
                 if (headerContextType.toLowerCase().contains(allow_content_type)) {
                     isReadResponse = true;

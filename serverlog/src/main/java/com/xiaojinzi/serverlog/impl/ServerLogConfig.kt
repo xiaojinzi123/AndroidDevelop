@@ -15,8 +15,10 @@ class ServerLogConfig private constructor(builder: Builder) {
     }
 
     class Builder constructor() {
+
         internal var productName: String? = null
         internal var debug = false
+
         internal val networkLogAllowReadRequestBodyContentTypeSet = mutableSetOf(
              "application/json", "text/plain"
         )

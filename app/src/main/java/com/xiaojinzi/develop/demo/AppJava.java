@@ -8,6 +8,11 @@ import com.xiaojinzi.develop.DevelopHelper;
 import com.xiaojinzi.serverlog.impl.ServerLog;
 import com.xiaojinzi.serverlog.impl.ServerLogConfig;
 
+import java.util.List;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+
 public class AppJava extends Application {
 
     @Override
@@ -26,5 +31,8 @@ public class AppJava extends Application {
                         .withProductName("serverLogDemo")
                         .build()
         );
+
+        List<Interceptor> list = new OkHttpClient().interceptors();
+
     }
 }

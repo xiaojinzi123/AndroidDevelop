@@ -1,6 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
+    // 供 networkLog Plugin 读取的两个拦截器的全类名. 两个都是可选的, 但是如果配置了就一定要配置正确
+    project.ext.networkLogFirstInterceptor = "com.xiaojinzi.serverlog.network.NetworkLogFirstInterceptor"
+    project.ext.networkLogTailInterceptor = "com.xiaojinzi.serverlog.network.NetworkLogTailInterceptor"
+
     ext.kotlin_version = "1.5.21"
     apply from: "dependencies.gradle"
 
@@ -14,7 +18,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // classpath "com.xiaojinzi:serverLog-log-gradle-plugin:1.0"
+        classpath "com.xiaojinzi:serverLog-log-gradle-plugin:1.0"
     }
 
 }
