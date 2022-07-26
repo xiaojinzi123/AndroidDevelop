@@ -91,6 +91,43 @@ abstract class BaseNetworkLogInterceptor : Interceptor {
         }
     }
 
+    @Throws(IOException::class)
+    private fun readResponse(response: Response, info: NetWorkLogInfoBean): Response {
+        info.res_code = response.code
+        info.res_message = response.message
+        val headers = response.headers
+        info.res_headers.clear()
+        val names = headers.names()
+        for (name in names) {
+            val headerValue = headers[name]
+            info.res_headers.add("$name: $headerValue")
+        }
+        val headerContentMediaType = response.body?.contentType()
+        val isReadResponse = if (headerContentMediaType == null) {
+            false
+        } else {
+            ServerLog
+                .mConfig
+                .networkLogAllowReadResponseBodyContentTypeSet
+                .any {
+                    "${headerContentMediaType.type}/${headerContentMediaType.subtype}".equals(
+                        other = it,
+                        ignoreCase = true
+                    )
+                }
+        }
+        if (!isReadResponse) {
+            info.res_body = "非可读格式 Body, 不做展示"
+            return response
+        }
+
+        info.res_body = response.body?.string()
+        val resultResponseBody: ResponseBody? =
+            info.res_body?.toResponseBody(contentType = response.body?.contentType())
+        return response.newBuilder().body(body = resultResponseBody).build()
+
+    }
+
     @CallSuper
     protected open fun doSend(netWorkLogInfo: NetWorkLogInfoBean) {
         Log.e(ServerLog.TAG, "BaseNetworkLogInterceptor.doSend")
@@ -98,42 +135,6 @@ abstract class BaseNetworkLogInterceptor : Interceptor {
 
     companion object {
         private const val CHARSET = "UTF-8"
-
-        @Throws(IOException::class)
-        fun readResponse(response: Response, info: NetWorkLogInfoBean): Response {
-            info.res_code = response.code
-            info.res_message = response.message
-            val headers = response.headers
-            info.res_headers.clear()
-            val names = headers.names()
-            for (name in names) {
-                val headerValue = headers[name]
-                info.res_headers.add("$name: $headerValue")
-            }
-            val headerContentMediaType = response.body?.contentType()
-            val isReadResponse = if (headerContentMediaType == null) {
-                false
-            } else {
-                ServerLog
-                    .mConfig
-                    .networkLogAllowReadResponseBodyContentTypeSet
-                    .any {
-                        "${headerContentMediaType.type}/${headerContentMediaType.subtype}".equals(
-                            other = it,
-                            ignoreCase = true
-                        )
-                    }
-            }
-            if (!isReadResponse) {
-                info.res_body = "非可读格式 Body, 不做展示"
-                return response
-            }
-
-            info.res_body = response.body?.string()
-            val resultResponseBody: ResponseBody? =
-                info.res_body?.toResponseBody(contentType = response.body?.contentType())
-            return response.newBuilder().body(body = resultResponseBody).build()
-
-        }
     }
+
 }
