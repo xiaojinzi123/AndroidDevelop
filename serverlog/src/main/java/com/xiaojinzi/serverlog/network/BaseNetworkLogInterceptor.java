@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Set;
 
+import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -74,12 +75,16 @@ public abstract class BaseNetworkLogInterceptor implements Interceptor {
 
         boolean isReadBody = false;
         String headerContextType = request.header("Content-Type");
-        if (!TextUtils.isEmpty(headerContextType)) {
-            assert headerContextType != null;
-            for (String allow_content_type : ServerLog.mConfig.getNetworkLogAllowReadRequestBodyContentTypeSet()) {
-                if (headerContextType.toLowerCase().contains(allow_content_type)) {
-                    isReadBody = true;
-                    break;
+        if(request.body() instanceof FormBody) {
+            isReadBody = true;
+        } else  {
+            if (!TextUtils.isEmpty(headerContextType)) {
+                assert headerContextType != null;
+                for (String allow_content_type : ServerLog.mConfig.getNetworkLogAllowReadRequestBodyContentTypeSet()) {
+                    if (headerContextType.toLowerCase().contains(allow_content_type)) {
+                        isReadBody = true;
+                        break;
+                    }
                 }
             }
         }
