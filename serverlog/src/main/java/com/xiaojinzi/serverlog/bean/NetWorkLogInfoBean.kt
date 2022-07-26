@@ -17,10 +17,10 @@ class NetWorkLogInfoBean {
      */
     var req_method: String? = null
     var req_url: String? = null
-    var req_headers: List<String> = ArrayList()
+    var req_headers: MutableList<String> = mutableListOf()
     var req_body: String? = null
     var res_code = 0
     var res_message: String? = null
-    var res_headers: List<String> = ArrayList()
+    var res_headers: MutableList<String> = mutableListOf()
     var res_body: String? = null
 }

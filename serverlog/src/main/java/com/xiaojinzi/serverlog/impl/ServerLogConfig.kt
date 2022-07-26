@@ -20,7 +20,7 @@ class ServerLogConfig private constructor(builder: Builder) {
         internal var debug = false
 
         internal val networkLogAllowReadRequestBodyContentTypeSet = mutableSetOf(
-             "application/json", "text/plain"
+            "application/x-www-form-urlencoded", "application/json", "text/plain"
         )
         internal val networkLogAllowReadResponseBodyContentTypeSet = mutableSetOf(
              "application/json", "text/plain"
