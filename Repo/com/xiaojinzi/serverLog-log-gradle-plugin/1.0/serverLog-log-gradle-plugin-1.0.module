@@ -1,0 +1,104 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.xiaojinzi",
+    "module": "serverLog-log-gradle-plugin",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "serverLog-log-gradle-plugin-1.0.jar",
+          "url": "serverLog-log-gradle-plugin-1.0.jar",
+          "size": 10704,
+          "sha512": "1143b1cba261eaa48e286c2b6dc01e954ebcdad1d75ef5b237f58738b1468db1365bc752e9396056e5529747785bf3dd74d5c4559b3887f012c2351827474edf",
+          "sha256": "d0c0c47f48cbdc5eaa7439580bf2575d4d343a934c675127dd0633c0e0711b1c",
+          "sha1": "b8bd64cd281d88a719fcfeb84804fbfa78bf9a7f",
+          "md5": "40e1989afa04d8468b46fa43fc80df66"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.ow2.asm",
+          "module": "asm",
+          "version": {
+            "requires": "9.0"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-commons",
+          "version": {
+            "requires": "9.0"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-tree",
+          "version": {
+            "requires": "9.0"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-util",
+          "version": {
+            "requires": "9.0"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.8.6"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle",
+          "version": {
+            "requires": "3.3.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "serverLog-log-gradle-plugin-1.0.jar",
+          "url": "serverLog-log-gradle-plugin-1.0.jar",
+          "size": 10704,
+          "sha512": "1143b1cba261eaa48e286c2b6dc01e954ebcdad1d75ef5b237f58738b1468db1365bc752e9396056e5529747785bf3dd74d5c4559b3887f012c2351827474edf",
+          "sha256": "d0c0c47f48cbdc5eaa7439580bf2575d4d343a934c675127dd0633c0e0711b1c",
+          "sha1": "b8bd64cd281d88a719fcfeb84804fbfa78bf9a7f",
+          "md5": "40e1989afa04d8468b46fa43fc80df66"
+        }
+      ]
+    }
+  ]
+}
