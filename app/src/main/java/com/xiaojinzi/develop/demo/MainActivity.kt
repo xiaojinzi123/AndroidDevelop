@@ -48,12 +48,12 @@ class MainActivity : AppCompatActivity() {
         netWorkLogInfoBean.req_url = "www.xiaojinzi.com"
         netWorkLogInfoBean.req_method = "POST"
         netWorkLogInfoBean.req_body = "{'name':'xiaojinzi','pass':'123'}"
-        netWorkLogInfoBean.req_headers = listOf("req_header1: value1", "req_header2: value2")
+        netWorkLogInfoBean.req_headers = listOf("req_header1: value1", "req_header2: value2").toMutableList()
 
         netWorkLogInfoBean.res_message = "ok"
         netWorkLogInfoBean.res_code = 200
         netWorkLogInfoBean.res_body = "{'res1':'value1','res2':'value2'}"
-        netWorkLogInfoBean.res_headers = listOf("res_header1: value1", "res_header2: value2")
+        netWorkLogInfoBean.res_headers = listOf("res_header1: value1", "res_header2: value2").toMutableList()
 
         val messageBean = MessageBean<NetWorkLogInfoBean>()
         messageBean.type = MessageBean.TYPE_NETWORK_FIRST
