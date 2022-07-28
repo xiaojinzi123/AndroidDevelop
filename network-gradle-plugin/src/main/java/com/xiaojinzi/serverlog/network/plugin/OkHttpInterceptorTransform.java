@@ -86,7 +86,7 @@ public class OkHttpInterceptorTransform extends BaseTransform {
                             System.out.println(IOUtil.MODULE_TAG + "找到了 okhttp3/OkHttpClient.class");
                             InputStream inputStream = jarFile.getInputStream(new ZipEntry(jarEntry));
                             byte[] bytes = OkHttpClientClassModify.doModify(inputStream, networkLogFirstInterceptorStr, networkLogTailInterceptorStr);
-                            try {
+                            /*try {
                                 File file = new File("/Users/hhkj/Documents/temp/OkHttpClientModified.class");
                                 file.delete();
                                 FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -96,7 +96,7 @@ public class OkHttpInterceptorTransform extends BaseTransform {
                             } catch (Exception ignore) {
                                 System.out.println(IOUtil.MODULE_TAG + "找到了 okhttp3/OkHttpClient.class 输出测试文件失败了");
                                 ignore.printStackTrace();
-                            }
+                            }*/
                             ZipEntry okHttpClientZipEntry = new ZipEntry(jarEntry.getName());
                             okHttpClientZipEntry.setSize(bytes.length);
                             CRC32 crc = new CRC32();
